@@ -1,0 +1,13 @@
+---
+
+- name: Install autojump.
+  homebrew:
+    name: autojump
+    state: present
+
+- name: Make sure your prompt is setup in .bash_profile.
+  lineinfile:
+    dest: '~/.bash_profile'
+    line: "[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh"
+    insertafter: EOF
+    state: present
